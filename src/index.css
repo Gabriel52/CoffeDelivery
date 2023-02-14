@@ -19,12 +19,19 @@ a:hover {
 }
 
 body {
-
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  font-family: 'Baloo 2', cursive;
+}
+
+body, input, textarea, button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
 }
 
 button {
