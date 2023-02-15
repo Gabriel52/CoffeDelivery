@@ -1,11 +1,19 @@
 import styled from "styled-components";
+import { IS_EMPTY } from "../../../../configuration/const";
 
-export const ContainerStyled = styled.div`
+type ContainerType = {
+    defocused: string;
+}
+
+export const ContainerStyled = styled.div<ContainerType>`
     display: grid;
     grid-template-columns: repeat(2, 50%);
     padding: 120px 160px;
+    filter: blur(${(props)=> props.defocused}) ;
 
-    filter: blur(0px);
+    position: ${(props) =>props.defocused === '0px' ? 'fixed': 'initial'};
+    z-index: ${(props) =>props.defocused === '0px' ? '1000': '0'};
+
 `
 
 export const BannerStyled = styled.div`

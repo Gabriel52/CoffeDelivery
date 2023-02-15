@@ -8,6 +8,8 @@ export const NavbarStyled = styled.nav`
     align-items: center;
     padding: 32px 160px;
     gap: 820px;
+
+    box-shadow: 9px 7px 5px rgb(161 152 152 / 77%);
 `
 
 export const ActionsStyled = styled.div`
