@@ -11,7 +11,7 @@ export const ContainerStyled = styled.div<ContainerType>`
     padding: 120px 160px;
     filter: blur(${(props)=> props.defocused}) ;
 
-    position: ${(props) =>props.defocused === '0px' ? 'fixed': 'initial'};
+    position: ${(props) =>props.defocused === '0px' ? 'absolute': 'initial'};
     z-index: ${(props) =>props.defocused === '0px' ? '1000': '0'};
 
 `
