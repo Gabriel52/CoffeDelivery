@@ -7,6 +7,7 @@ export const ListProducts = ():JSX.Element => {
             <TitleStyled>
                 Nossos cafés
             </TitleStyled>
+            
         </WrapperStyled>
     )
 }
