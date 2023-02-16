@@ -11,7 +11,7 @@ import {
 
 import LogoImage from '../../assets/logo.svg'
 import { CITY_LOCATION } from '../../configuration/const';
-import { COLORS } from '../../colors';
+import { COLORS } from '../../configuration/colors';
 
 
 export const Navbar = ():JSX.Element => {

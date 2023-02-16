@@ -1,5 +1,6 @@
 import { RouterProvider } from 'react-router-dom'
 import { Navbar } from './components/Navbar'
+import { ProductsProvider } from './Provider'
 
 import { router } from './routes'
 
@@ -7,8 +8,10 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <RouterProvider router={router} />
+      <ProductsProvider>
+        <Navbar />
+        <RouterProvider router={router} />
+      </ProductsProvider>
     </>
   )
 }

@@ -68,7 +68,7 @@
             "id": 9,
             "name": "Mocaccino",
             "description": "Café expresso com calda de chocolate, pouco leite e espuma",
-            "photo": "macchiato",
+            "photo": "mocaccino",
             "price": 9.90,
             "tag": ["Tradicional", "Com leite"]
         },

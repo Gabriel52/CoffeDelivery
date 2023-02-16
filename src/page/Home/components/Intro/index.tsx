@@ -13,7 +13,7 @@ import {
     TypographyIconStyled
 } from "./styled"
 import BannerImage from '../../../../assets/banner.svg'
-import { COLORS } from '../../../../colors';
+import { COLORS } from '../../../../configuration/colors';
 
 export const Intro = ()=> {
     return (

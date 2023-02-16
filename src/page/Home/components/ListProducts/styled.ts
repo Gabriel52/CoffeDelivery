@@ -8,3 +8,12 @@ export const TitleStyled = styled.h2`
     font-size: 32px;
     font-weight: 800;
 `
+
+export const ContentListCardStyled = styled.section`
+    display: flex;
+    flex-wrap: wrap;
+
+    row-gap: 40px;
+    column-gap: 32px;
+    margin-top: 54px;
+`

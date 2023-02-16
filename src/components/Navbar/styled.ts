@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS } from "../../colors";
+import { COLORS } from "../../configuration/colors";
 
 export const NavbarStyled = styled.nav`
     display: flex;

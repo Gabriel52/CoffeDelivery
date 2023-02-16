@@ -25,6 +25,9 @@ body {
 
 h1 {
   font-size: 3.2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   font-family: 'Baloo 2', cursive;
 }
@@ -51,6 +54,20 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #585757;        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #d8d4d4;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid #d8d4d4;  /* creates padding around scroll thumb */
 }
 
 @media (prefers-color-scheme: light) {
