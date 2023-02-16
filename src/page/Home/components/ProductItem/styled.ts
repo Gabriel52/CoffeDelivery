@@ -47,5 +47,7 @@ export const DescriptionStyled = styled.p`
     margin: 0;
     font-weight: 700;
     font-size: 14px;
-    color: ${COLORS.base_label}
+    color: ${COLORS.base_label};
 `
+
+export const ContentBuyStyled = styled.div``

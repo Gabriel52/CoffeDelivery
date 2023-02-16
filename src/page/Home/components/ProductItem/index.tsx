@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 import { ProductType } from '../../../../types';
+import { formatNumber } from '../../../../utils/formatNumber';
 import { 
     CardStyled, 
+    ContentBuyStyled, 
     DescriptionStyled, 
     ListTagStyled, 
     ProductProfile, 
@@ -15,6 +17,12 @@ type Props = {
 
 export const ProductItem = ({productItem}:Props) => {
     const [picture, setPicture] = useState<any>()
+    const currencySettings = {
+        language: 'pt-BR',
+        value: productItem.price,
+        style: 'currency',
+        currency: 'BRL'
+    }
     useEffect(()=>{
         const dynamicImport = ()=> {
             import(`../../../../assets/${productItem.photo}.svg`)
@@ -37,6 +45,9 @@ export const ProductItem = ({productItem}:Props) => {
             <DescriptionStyled>
                 {productItem.description}
             </DescriptionStyled>
+            <ContentBuyStyled>
+                <p>{formatNumber(currencySettings)}</p>
+            </ContentBuyStyled>
         </CardStyled>
     )
 }
