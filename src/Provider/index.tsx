@@ -24,10 +24,23 @@ export const ProductsProvider = ({children}:PropsContext) => {
         fetchData()
     },[])
 
+    const updateProductToCart = (idProduct: number, quantityOfProducts: number) => {
+        const newProducts:ProductType[] = products.map((products)=>{
+            return {
+                ...products,
+                selectedQuantity: idProduct === products.id 
+                    ? quantityOfProducts : products.selectedQuantity
+            }
+        } )
+
+        setProducts(newProducts)
+    }
+
 
     return (
         <ProductsContext.Provider value={{
             products,
+            updateProductToCart
         }}>
             {children}
         </ProductsContext.Provider>

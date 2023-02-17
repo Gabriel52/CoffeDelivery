@@ -71,6 +71,16 @@ export const ContentCartStyled = styled.div`
         background-color: ${COLORS.base_button};
         padding: 7.5px;
     }
+
+    div:last-child {
+        padding: 8px;
+        background-color: ${COLORS.purple_dark};
+        border-radius: 8px;
+    
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
 `
 
 type ButtonProps = {
@@ -82,5 +92,5 @@ export const ButtonBuyStyled = styled.button<ButtonProps>`
     border-radius: ${(props)=> props.borderRadius};
     color: ${COLORS.purple};
     font-weight: bold;
-    padding: 0.4em 0.8em
+    padding: 0.4em 0.8em;
 `
