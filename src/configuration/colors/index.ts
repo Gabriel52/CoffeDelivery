@@ -10,5 +10,6 @@ export const COLORS = {
     purple_dark: '#4B2995',
     purple_light: '#EBE5F9',
     white: '#FFFFFF',
-    base_label: '#8D8686'
+    base_label: '#8D8686',
+    base_button: '#E6E5E5 '
 }

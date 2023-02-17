@@ -4,5 +4,7 @@ export type ProductType = {
     description: string,
     photo: string,
     price: number,
-    tag: string[]
+    tag: string[],
+    stock: 50,
+    selectedQuantity: 0,
 }

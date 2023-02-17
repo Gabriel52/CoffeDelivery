@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { FaCartArrowDown } from 'react-icons/fa';
 
+import { COLORS } from '../../../../configuration/colors';
 import { ProductType } from '../../../../types';
 import { formatNumber } from '../../../../utils/formatNumber';
 import { 
+    ButtonBuyStyled,
     CardStyled, 
     ContentBuyStyled, 
+    ContentCartStyled, 
     DescriptionStyled, 
     ListTagStyled, 
+    PriceStyled, 
     ProductProfile, 
     TitleStyled 
 } from './styled';
@@ -46,7 +51,23 @@ export const ProductItem = ({productItem}:Props) => {
                 {productItem.description}
             </DescriptionStyled>
             <ContentBuyStyled>
-                <p>{formatNumber(currencySettings)}</p>
+                <PriceStyled>{formatNumber(currencySettings)}</PriceStyled>
+                <ContentCartStyled>
+                    <div>
+                        <ButtonBuyStyled borderRadius='8px 0px 0px 8px'>
+                            -
+                        </ButtonBuyStyled>
+                        <span>
+                            {productItem.selectedQuantity}
+                        </span>
+                        <ButtonBuyStyled borderRadius='0px 8px 8px 0px'>
+                            +
+                        </ButtonBuyStyled>
+                    </div>
+                    <div>
+                        <FaCartArrowDown color={COLORS.white}/>
+                    </div>
+                </ContentCartStyled>
             </ContentBuyStyled>
         </CardStyled>
     )

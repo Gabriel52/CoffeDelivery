@@ -50,4 +50,37 @@ export const DescriptionStyled = styled.p`
     color: ${COLORS.base_label};
 `
 
-export const ContentBuyStyled = styled.div``
+export const ContentBuyStyled = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 22px;
+`
+
+export const PriceStyled = styled.h5`
+    font-size: 22px;
+    font-weight: 800;
+`
+
+export const ContentCartStyled = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    span {
+        background-color: ${COLORS.base_button};
+        padding: 7.5px;
+    }
+`
+
+type ButtonProps = {
+    borderRadius: string
+} 
+
+export const ButtonBuyStyled = styled.button<ButtonProps>`
+    background-color: ${COLORS.base_button};
+    border-radius: ${(props)=> props.borderRadius};
+    color: ${COLORS.purple};
+    font-weight: bold;
+    padding: 0.4em 0.8em
+`
