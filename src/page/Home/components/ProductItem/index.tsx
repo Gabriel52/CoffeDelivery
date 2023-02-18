@@ -59,7 +59,11 @@ export const ProductItem = ({productItem}:Props) => {
                         <ButtonBuyStyled 
                             borderRadius='8px 0px 0px 8px'
                             onClick={()=> 
-                                updateProductToCart(productItem.id, productItem.selectedQuantity - 1)}
+                                updateProductToCart(
+                                    productItem.id, 
+                                    productItem.selectedQuantity - 1, 
+                                    productItem.stock
+                                )}
                         >
                             -
                         </ButtonBuyStyled>
@@ -69,7 +73,11 @@ export const ProductItem = ({productItem}:Props) => {
                         <ButtonBuyStyled 
                             borderRadius='0px 8px 8px 0px' 
                             onClick={()=> 
-                                updateProductToCart(productItem.id, productItem.selectedQuantity + 1)}
+                                updateProductToCart(
+                                    productItem.id, 
+                                    productItem.selectedQuantity + 1,
+                                    productItem.stock
+                                )}
                         >
                             +
                         </ButtonBuyStyled>

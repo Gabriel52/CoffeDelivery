@@ -7,7 +7,7 @@
             "photo": "traditional",
             "price": 9.90,
             "tag": ["Tradicional"],
-            "stock": 50,
+            "stock": 10,
             "selectedQuantity": 0
         },
 
@@ -18,7 +18,7 @@
             "photo": "american",
             "price": 9.90,
             "tag": ["Tradicional"],
-            "stock": 50,
+            "stock": 10,
             "selectedQuantity": 0
         },
         {
@@ -28,7 +28,7 @@
             "photo": "creamy",
             "price": 9.90,
             "tag": ["Tradicional"],
-            "stock": 50,
+            "stock": 10,
             "selectedQuantity": 0
         },
         {
@@ -38,7 +38,7 @@
             "photo": "iced",
             "price": 9.90,
             "tag": ["Tradicional", "Gelado"],
-            "stock": 50,
+            "stock": 10,
             "selectedQuantity": 0
         },
         {
@@ -48,7 +48,7 @@
             "photo": "coffeewithmilk",
             "price": 9.90,
             "tag": ["Tradicional", "Com leite"],
-            "stock": 50,
+            "stock": 10,
             "selectedQuantity": 0
         },
         {
@@ -58,7 +58,7 @@
             "photo": "latte",
             "price": 9.90,
             "tag": ["Tradicional", "Com leite"],
-            "stock": 50,
+            "stock": 10,
             "selectedQuantity": 0
         },
         {
@@ -68,7 +68,7 @@
             "photo": "cappucino",
             "price": 9.90,
             "tag": ["Tradicional", "Com leite"],
-            "stock": 50,
+            "stock": 10,
             "selectedQuantity": 0
         },
         {
@@ -78,7 +78,7 @@
             "photo": "macchiato",
             "price": 9.90,
             "tag": ["Tradicional", "Com leite"],
-            "stock": 50,
+            "stock": 10,
             "selectedQuantity": 0
         },
         {
@@ -88,7 +88,7 @@
             "photo": "mocaccino",
             "price": 9.90,
             "tag": ["Tradicional", "Com leite"],
-            "stock": 50,
+            "stock": 10,
             "selectedQuantity": 0
         },
         {
@@ -98,7 +98,7 @@
             "photo": "hotchocolate",
             "price": 9.90,
             "tag": ["Tradicional", "Com leite"],
-            "stock": 50,
+            "stock": 10,
             "selectedQuantity": 0
         },
         {
@@ -108,7 +108,7 @@
             "photo": "cubano",
             "price": 9.90,
             "tag": ["Especial", "Alcoólico", "Gelado"],
-            "stock": 50,
+            "stock": 10,
             "selectedQuantity": 0
         },
         {
@@ -118,7 +118,7 @@
             "photo": "hawaiian",
             "price": 9.90,
             "tag": ["Especial"],
-            "stock": 50,
+            "stock": 10,
             "selectedQuantity": 0
         },
         {
@@ -128,7 +128,7 @@
             "photo": "arabic",
             "price": 9.90,
             "tag": ["Especial"],
-            "stock": 50,
+            "stock": 10,
             "selectedQuantity": 0
         },
         {
@@ -138,7 +138,7 @@
             "photo": "irish",
             "price": 9.90,
             "tag": ["Especial", "Alcoólico"],
-            "stock": 50,
+            "stock": 10,
             "selectedQuantity": 0
         }
     ]

@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
-// ========================================================================
+import { toast } from 'react-toastify';
+
 
 import { API } from '../services/api';
 import { ProductType } from '../types';
@@ -24,7 +25,18 @@ export const ProductsProvider = ({children}:PropsContext) => {
         fetchData()
     },[])
 
-    const updateProductToCart = (idProduct: number, quantityOfProducts: number) => {
+    const updateProductToCart = (
+        idProduct: number, 
+        quantityOfProducts: number, 
+        stock: number
+    ) => {
+        if(quantityOfProducts < 0 ){
+            return
+        }
+        else if(quantityOfProducts > stock){
+            toast.warning("Você atingiu o numero máximo deste produto")
+            return
+        }
         const newProducts:ProductType[] = products.map((products)=>{
             return {
                 ...products,
