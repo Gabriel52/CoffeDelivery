@@ -18,11 +18,12 @@ const ProductsContext = createContext<PropsProvider>({} as PropsProvider);
 export const ProductsProvider = ({children}:PropsContext) => {
     const [products, setProducts] = useState<ProductType[] | []>([]);
     const [totalPrice, setTotalPrice ] = useState<number>(0);
-
+    const [amountProducts, setAmountProducts] = useState<number>(0)
     
     useEffect(()=> {
         const productsLocal = localStorage.getItem('products');
-        const totalProductsLocal = localStorage.getItem('totalProducts');
+        const totalProductsLocal = localStorage.getItem('totalPrice');
+        const amountProductsLocal = localStorage.getItem('amountProducts');
 
         const fetchData = async () => {
             const { data } = await API.get('coffees')
@@ -31,6 +32,7 @@ export const ProductsProvider = ({children}:PropsContext) => {
         if(!!productsLocal){
             setProducts(JSON.parse(productsLocal))
             setTotalPrice(Number(totalProductsLocal))
+            setAmountProducts(Number(amountProductsLocal))
             return
         }
         fetchData()
@@ -56,21 +58,32 @@ export const ProductsProvider = ({children}:PropsContext) => {
             }
         } )
         setProducts(newProducts)
+        
+        calculateTotalProducts(newProducts)
         calculateTotalPrice(newProducts)
 
         localStorage.setItem("products", JSON.stringify(newProducts))   
     }
 
     const calculateTotalPrice = (newProducts: ProductType[])=>{
-        const totalProducts = 
+        const totalPrice = 
             newProducts.filter(product => product.selectedQuantity !== IS_EMPTY)
                 .map((product)=> product.selectedQuantity * product.price)
                 .reduce((accumulator, currentValue )=> accumulator + currentValue)
 
-        setTotalPrice(totalProducts)
-        localStorage.setItem("totalProducts", JSON.stringify(totalProducts))   
+        setTotalPrice(totalPrice)
+        localStorage.setItem("totalPrice", JSON.stringify(totalPrice))   
     }
 
+    const calculateTotalProducts = (newProducts: ProductType[])=>{
+        const amountProducts = 
+            newProducts.filter(product => product.selectedQuantity !== IS_EMPTY)
+                .map((product)=> product.selectedQuantity)
+                .reduce((accumulator, currentValue )=> accumulator + currentValue)
+
+        setTotalPrice(amountProducts)
+        localStorage.setItem("amountProducts", JSON.stringify(amountProducts))   
+    }
     return (
         <ProductsContext.Provider value={{
             products,
