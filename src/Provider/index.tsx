@@ -22,12 +22,15 @@ export const ProductsProvider = ({children}:PropsContext) => {
     
     useEffect(()=> {
         const productsLocal = localStorage.getItem('products');
+        const totalProductsLocal = localStorage.getItem('totalProducts');
+
         const fetchData = async () => {
             const { data } = await API.get('coffees')
             setProducts(data)
         }
         if(!!productsLocal){
             setProducts(JSON.parse(productsLocal))
+            setTotalPrice(Number(totalProductsLocal))
             return
         }
         fetchData()
@@ -65,6 +68,7 @@ export const ProductsProvider = ({children}:PropsContext) => {
                 .reduce((accumulator, currentValue )=> accumulator + currentValue)
 
         setTotalPrice(totalProducts)
+        localStorage.setItem("totalProducts", JSON.stringify(totalProducts))   
     }
 
     return (
