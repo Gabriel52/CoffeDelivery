@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
+import { IS_EMPTY } from '../configuration/const';
 
 
 import { API } from '../services/api';
@@ -15,7 +16,9 @@ type PropsContext = {
 const ProductsContext = createContext<PropsProvider>({} as PropsProvider);
 
 export const ProductsProvider = ({children}:PropsContext) => {
-    const [products, setProducts] = useState<ProductType[] | []>([])
+    const [products, setProducts] = useState<ProductType[] | []>([]);
+    const [totalPrice, setTotalPrice ] = useState<number>(0);
+
     
     useEffect(()=> {
         const fetchData = async () => {
@@ -44,15 +47,24 @@ export const ProductsProvider = ({children}:PropsContext) => {
                     ? quantityOfProducts : products.selectedQuantity
             }
         } )
-
         setProducts(newProducts)
+        calculateTotalPrice(newProducts)
     }
 
+    const calculateTotalPrice = (newProducts: ProductType[])=>{
+        const totalProducts = 
+            newProducts.filter(product => product.selectedQuantity !== IS_EMPTY)
+                .map((product)=> product.selectedQuantity * product.price)
+                .reduce((accumulator, currentValue )=> accumulator + currentValue)
+
+        setTotalPrice(totalProducts)
+    }
 
     return (
         <ProductsContext.Provider value={{
             products,
-            updateProductToCart
+            updateProductToCart,
+            totalPrice
         }}>
             {children}
         </ProductsContext.Provider>
