@@ -37,7 +37,6 @@ export const ProductsProvider = ({children}:PropsContext) => {
         }
         fetchData()
     },[])
-
     const updateProductToCart = (
         idProduct: number, 
         quantityOfProducts: number, 
@@ -58,7 +57,6 @@ export const ProductsProvider = ({children}:PropsContext) => {
             }
         } )
         setProducts(newProducts)
-        
         calculateTotalProducts(newProducts)
         calculateTotalPrice(newProducts)
 
@@ -66,29 +64,43 @@ export const ProductsProvider = ({children}:PropsContext) => {
     }
 
     const calculateTotalPrice = (newProducts: ProductType[])=>{
-        const totalPrice = 
-            newProducts.filter(product => product.selectedQuantity !== IS_EMPTY)
-                .map((product)=> product.selectedQuantity * product.price)
-                .reduce((accumulator, currentValue )=> accumulator + currentValue)
-
-        setTotalPrice(totalPrice)
-        localStorage.setItem("totalPrice", JSON.stringify(totalPrice))   
+        const itemsProduct = newProducts.filter(product => product.selectedQuantity !== IS_EMPTY)
+        if(itemsProduct?.length !== IS_EMPTY){
+            const totalPrice = 
+                itemsProduct
+                    .map((product)=> product.selectedQuantity * product.price)
+                    .reduce((accumulator, currentValue )=> accumulator + currentValue)
+            setTotalPrice(totalPrice)
+            localStorage.setItem("totalPrice", JSON.stringify(totalPrice))   
+        }else{
+            setTotalPrice(IS_EMPTY)
+            localStorage.setItem("totalPrice", JSON.stringify(IS_EMPTY))  
+        }
     }
 
     const calculateTotalProducts = (newProducts: ProductType[])=>{
-        const amountProducts = 
+        const itemsProducts = 
             newProducts.filter(product => product.selectedQuantity !== IS_EMPTY)
-                .map((product)=> product.selectedQuantity)
-                .reduce((accumulator, currentValue )=> accumulator + currentValue)
+        if(itemsProducts.length !== IS_EMPTY ){
+            const amountProducts = 
+                itemsProducts
+                    .map((product)=> product.selectedQuantity)
+                    .reduce((accumulator, currentValue )=> accumulator + currentValue)
+    
+            setAmountProducts(amountProducts)
+            localStorage.setItem("amountProducts", JSON.stringify(amountProducts))   
+        }else{
+            setAmountProducts(IS_EMPTY)
+            localStorage.setItem("amountProducts", JSON.stringify(IS_EMPTY))   
+        }
 
-        setTotalPrice(amountProducts)
-        localStorage.setItem("amountProducts", JSON.stringify(amountProducts))   
     }
     return (
         <ProductsContext.Provider value={{
             products,
             updateProductToCart,
-            totalPrice
+            totalPrice,
+            amountProducts
         }}>
             {children}
         </ProductsContext.Provider>

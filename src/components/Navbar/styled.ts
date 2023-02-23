@@ -28,6 +28,7 @@ export const TagLocationStyled = styled.p`
     margin: 0;
 
     background-color: ${COLORS.purple_light};
+    color: ${COLORS.purple_dark};
     border-radius: 6px;
     padding: 8px;
 `
@@ -37,4 +38,23 @@ export const TagCartStyled = styled.span`
     padding: 8px;
     border-radius: 6px;
 
+`
+
+export const NumberCartStyled = styled.div`
+    display: flex;
+    background-color: ${COLORS.yellow_dark};
+    width: 24px;
+    height: 24px;
+    border-radius: 1000px;
+
+    justify-content: center;
+    align-items: center;
+
+    color: ${COLORS.white};
+    font-weight: bold;
+    font-size:14px;
+
+    position: absolute;
+    right: 150px;
+    top: 20px;
 `
