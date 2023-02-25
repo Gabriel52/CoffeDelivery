@@ -27,8 +27,8 @@ export const ProductsProvider = ({children}:PropsContext) => {
                 if(result.state !== PERMISSION_ENABLED_LOCATION){
                     toast.error("Não conseguimos te localizar")
                 }else {
-                    navigator.geolocation.getCurrentPosition((position)=>{
-                        const response = await get(
+                    navigator.geolocation.getCurrentPosition((position) =>{
+                        const response =  get(
                             {
                                 latitude: position.coords.latitude, 
                                 longitude: position.coords.longitude
