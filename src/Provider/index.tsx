@@ -1,10 +1,11 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
-import { IS_EMPTY } from '../configuration/const';
+import { IS_EMPTY, PERMISSION_ENABLED_LOCATION } from '../configuration/const';
 
 
 import { API } from '../services/api';
-import { ProductType } from '../types';
+import { get } from '../services/searchLocation/get';
+import { LocationTYpe, ProductType } from '../types';
 import { PropsProvider } from './types';
 
 
@@ -19,7 +20,32 @@ export const ProductsProvider = ({children}:PropsContext) => {
     const [products, setProducts] = useState<ProductType[] | []>([]);
     const [totalPrice, setTotalPrice ] = useState<number>(0);
     const [amountProducts, setAmountProducts] = useState<number>(0)
-    
+    const [userLocation, setUserLocation] = useState<LocationTYpe>()
+    useEffect(()=>{
+        const getLocation = async ()=> {
+            navigator.permissions.query({name: 'geolocation'}).then((result)=>{
+                if(result.state !== PERMISSION_ENABLED_LOCATION){
+                    toast.error("Não conseguimos te localizar")
+                }else {
+                    navigator.geolocation.getCurrentPosition((position)=>{
+                        const response = await get(
+                            {
+                                latitude: position.coords.latitude, 
+                                longitude: position.coords.longitude
+                            }
+                        )
+                        console.log(response)
+                        // const data: LocationTYpe = {
+                        //     country: response.
+                        // }
+                        // setUserLocation()
+
+                    })
+                }
+            })
+        }
+        getLocation()
+    },[])    
     useEffect(()=> {
         const productsLocal = localStorage.getItem('products');
         const totalProductsLocal = localStorage.getItem('totalPrice');

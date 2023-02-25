@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaCartArrowDown } from 'react-icons/fa';
 import { MdLocationPin } from 'react-icons/md';
 
@@ -11,13 +11,14 @@ import {
 } from "./styled"
 
 import LogoImage from '../../assets/logo.svg'
-import { CITY_LOCATION, IS_EMPTY } from '../../configuration/const';
+import { CITY_LOCATION, IS_EMPTY, PERMISSION_ENABLED_LOCATION } from '../../configuration/const';
 import { COLORS } from '../../configuration/colors';
 import { useProducts } from '../../Provider';
 
 
 export const Navbar = ():JSX.Element => {
     const { amountProducts } = useProducts()
+    
     return (
         <NavbarStyled>
             <img src={LogoImage} alt="Logo" />

@@ -8,3 +8,8 @@ export type ProductType = {
     stock: number,
     selectedQuantity: number,
 }
+
+export type LocationTYpe = {
+    country: string,
+    state: string
+}
