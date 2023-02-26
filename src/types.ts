@@ -9,7 +9,7 @@ export type ProductType = {
     selectedQuantity: number,
 }
 
-export type LocationTYpe = {
+export type LocationType = {
     country: string,
     state: string
 }

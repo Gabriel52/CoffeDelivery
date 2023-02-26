@@ -5,7 +5,7 @@ import { IS_EMPTY, PERMISSION_ENABLED_LOCATION } from '../configuration/const';
 
 import { API } from '../services/api';
 import { get } from '../services/searchLocation/get';
-import { LocationTYpe, ProductType } from '../types';
+import { LocationType, ProductType } from '../types';
 import { PropsProvider } from './types';
 
 
@@ -20,26 +20,31 @@ export const ProductsProvider = ({children}:PropsContext) => {
     const [products, setProducts] = useState<ProductType[] | []>([]);
     const [totalPrice, setTotalPrice ] = useState<number>(0);
     const [amountProducts, setAmountProducts] = useState<number>(0)
-    const [userLocation, setUserLocation] = useState<LocationTYpe>()
+    const [userLocation, setUserLocation] = useState<LocationType>()
+    const [loadingSearchLocation, setLoadingSearchLocation] = useState<boolean>(true);
     useEffect(()=>{
         const getLocation = async ()=> {
             navigator.permissions.query({name: 'geolocation'}).then((result)=>{
                 if(result.state !== PERMISSION_ENABLED_LOCATION){
                     toast.error("Não conseguimos te localizar")
                 }else {
-                    navigator.geolocation.getCurrentPosition((position) =>{
-                        const response =  get(
+                    navigator.geolocation.getCurrentPosition(async (position) =>{
+                        const response = await get(
                             {
                                 latitude: position.coords.latitude, 
                                 longitude: position.coords.longitude
                             }
                         )
-                        console.log(response)
-                        // const data: LocationTYpe = {
-                        //     country: response.
-                        // }
-                        // setUserLocation()
-
+                        if(response.error){
+                            toast.error("Não conseguimos te localizar")
+                            return
+                        }
+                        const data: LocationType = {
+                            country: response.data.address.country,
+                            state: response.data.address.state
+                        }
+                        setUserLocation(data)
+                        setLoadingSearchLocation(false)
                     })
                 }
             })
@@ -126,7 +131,9 @@ export const ProductsProvider = ({children}:PropsContext) => {
             products,
             updateProductToCart,
             totalPrice,
-            amountProducts
+            amountProducts,
+            userLocation,
+            loadingSearchLocation
         }}>
             {children}
         </ProductsContext.Provider>

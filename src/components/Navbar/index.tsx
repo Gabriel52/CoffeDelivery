@@ -14,26 +14,35 @@ import LogoImage from '../../assets/logo.svg'
 import { CITY_LOCATION, IS_EMPTY, PERMISSION_ENABLED_LOCATION } from '../../configuration/const';
 import { COLORS } from '../../configuration/colors';
 import { useProducts } from '../../Provider';
+import { Skeleton } from '../Skeleton';
 
 
 export const Navbar = ():JSX.Element => {
-    const { amountProducts } = useProducts()
+    const { amountProducts, userLocation, loadingSearchLocation } = useProducts()
     
     return (
         <NavbarStyled>
             <img src={LogoImage} alt="Logo" />
+
             <ActionsStyled>
-                <TagLocationStyled>
-                        <MdLocationPin color={COLORS.purple_dark}/>
-                        {CITY_LOCATION}
-                </TagLocationStyled>
-                <TagCartStyled>
-                    <FaCartArrowDown color={COLORS.yellow_dark}/>
-                </TagCartStyled>
-                {amountProducts > IS_EMPTY && (
-                    <NumberCartStyled>
-                        {amountProducts}
-                    </NumberCartStyled>
+                {loadingSearchLocation ? (
+                    <Skeleton width='180px' height='42px'/>
+                ):(
+                    <>
+                        <TagLocationStyled>
+                                <MdLocationPin color={COLORS.purple_dark}/>
+                                {userLocation?.state}
+                        </TagLocationStyled>
+                        <TagCartStyled>
+                            <FaCartArrowDown color={COLORS.yellow_dark} />
+                        </TagCartStyled>
+                        {amountProducts > IS_EMPTY && (
+                            <NumberCartStyled>
+                                {amountProducts}
+                            </NumberCartStyled>
+                        )}
+                    </>
+
                 )}
             </ActionsStyled>
         </NavbarStyled>

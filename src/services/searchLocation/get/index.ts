@@ -1,4 +1,3 @@
-import { AxiosRequestConfig } from "axios";
 import { BASE_URL_SEARCH_USER_LOCATION } from "../../../configuration/const";
 import { API } from "../../api";
 
@@ -7,7 +6,12 @@ type Props = {
     longitude: number;
 }
 
-export async function get({latitude, longitude}: Props){
+type GetResponse = {
+    error: boolean;
+    data: any;
+}
+
+export async function get({latitude, longitude}: Props):Promise<GetResponse>{
     const params = 
         `${BASE_URL_SEARCH_USER_LOCATION}/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`
     
