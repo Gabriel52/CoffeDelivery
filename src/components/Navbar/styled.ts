@@ -20,6 +20,9 @@ export const ActionsStyled = styled.div`
         width: 22px;
         height: 22px;
     }
+    a {
+        display: flex;
+    }
 
 `
 export const TagLocationStyled = styled.p`
@@ -37,6 +40,11 @@ export const TagCartStyled = styled.span`
     background-color: ${COLORS.yellow_light};
     padding: 8px;
     border-radius: 6px;
+    transition: all 700ms;
+
+    :hover{
+        filter: brightness(50%)
+    }
 
 `
 
