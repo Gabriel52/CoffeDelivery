@@ -1,9 +1,16 @@
 import React from 'react';
+import { FormAddress } from './components/FormAddress';
+import { WrapperCheckoutStyled } from './styled';
 
 export const Checkout = ():JSX.Element=> {
     return (
-        <div>
-            <h2>Success screen</h2>
-        </div>
+        <WrapperCheckoutStyled>
+            <div>
+                <FormAddress/>
+            </div>
+            <div>
+                <FormAddress/>
+            </div>
+        </WrapperCheckoutStyled>
     )
 }   
