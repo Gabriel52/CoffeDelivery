@@ -1,3 +1,5 @@
+import { InputStyled } from "./styled";
+
 type Props = {
     width?: string;
     placeholder?: string;
@@ -5,14 +7,20 @@ type Props = {
     type: string;
 }
 
-export const Input = ({width,placeholder, name, type,...rest}:Props)=> {
-    return
-    <>
-        <input 
+export const Input = ({
+    width='100%',
+    placeholder, 
+    name, 
+    type,
+    ...rest
+}:Props)=> {
+    return(
+        <InputStyled
+            width={width}
             type={type} 
             placeholder={placeholder}
             name={name}
             {...rest}
         />
-    </>
+    )
 }

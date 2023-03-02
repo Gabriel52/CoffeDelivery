@@ -32,6 +32,7 @@ export const TypographyStyled = styled.p<TypographyType>`
 export const ContentTitleBoxStyled = styled.div`
     display: flex;
     gap: 8px;
+    margin-bottom: 32px;
 `
 
 export const FieldsAddressStyled = styled.div``
