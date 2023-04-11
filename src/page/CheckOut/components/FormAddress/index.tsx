@@ -1,9 +1,15 @@
 import React from 'react';
 import { IoLocationOutline } from 'react-icons/io5';
-import { Input } from '../../../../components/Input/Input';
+import { Input, Spacing } from '../../../../components';
 import { COLORS } from '../../../../configuration/colors';
 
-import { BoxAddressStyled, ContentTitleBoxStyled, FieldsAddressStyled, TiTleStyled, TypographyStyled } from './styled';
+import { 
+    BoxAddressStyled, 
+    ContentTitleBoxStyled, 
+    FieldsAddressStyled, 
+    TiTleStyled, 
+    TypographyStyled 
+} from './styled';
 
 export const FormAddress = ()=> {
     return(
@@ -24,13 +30,22 @@ export const FormAddress = ()=> {
                     </div>
                 </ContentTitleBoxStyled>
                 <FieldsAddressStyled>
-                        <Input 
-                            width="200px"
-                            name="cep" 
+                    <Input 
+                        width="200px"
+                        name="cep" 
+                        type="text" 
+                        placeholder='CEP'
+                    />
+                    <Spacing>
+                        <Input
+                            width='96%'
+                            name="street" 
                             type="text" 
-                            placeholder='CEP'
+                            placeholder='Rua'
                         />
-                    </FieldsAddressStyled>
+
+                    </Spacing>
+                </FieldsAddressStyled>
             </BoxAddressStyled>
         </div>
     )

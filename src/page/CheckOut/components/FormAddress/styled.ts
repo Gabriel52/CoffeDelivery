@@ -35,4 +35,4 @@ export const ContentTitleBoxStyled = styled.div`
     margin-bottom: 32px;
 `
 
-export const FieldsAddressStyled = styled.div``
+export const FieldsAddressStyled = styled.form``
