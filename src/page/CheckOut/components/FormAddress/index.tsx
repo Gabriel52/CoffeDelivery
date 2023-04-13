@@ -7,6 +7,7 @@ import {
     BoxAddressStyled, 
     ContentTitleBoxStyled, 
     FieldsAddressStyled, 
+    GroupInputStyled, 
     TiTleStyled, 
     TypographyStyled 
 } from './styled';
@@ -36,14 +37,46 @@ export const FormAddress = ()=> {
                         type="text" 
                         placeholder='CEP'
                     />
-                    <Spacing>
+                    <Spacing type="margin" top="16px">
                         <Input
                             width='96%'
                             name="street" 
                             type="text" 
                             placeholder='Rua'
                         />
-
+                    </Spacing>
+                    <Spacing type="margin" top="16px">
+                        <GroupInputStyled gridTemplateColumns='30% 60%' gap="6%">
+                            <Input
+                                name="houseNumber" 
+                                type="number" 
+                                placeholder='Número'
+                            />
+                            <Input
+                                name="complement" 
+                                type="text" 
+                                placeholder='Complemento'
+                            />
+                        </GroupInputStyled>
+                    </Spacing>
+                    <Spacing type="margin" top="16px">
+                        <GroupInputStyled gridTemplateColumns='30% 36% 18%' gap="6%">
+                            <Input
+                                name="neighborhood" 
+                                type="text" 
+                                placeholder='Bairro'
+                            />
+                            <Input
+                                name="city" 
+                                type="text" 
+                                placeholder='Cidade'
+                            />
+                            <Input
+                                name="uf" 
+                                type="text" 
+                                placeholder='UF'
+                            />
+                        </GroupInputStyled>
                     </Spacing>
                 </FieldsAddressStyled>
             </BoxAddressStyled>

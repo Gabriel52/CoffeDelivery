@@ -36,3 +36,14 @@ export const ContentTitleBoxStyled = styled.div`
 `
 
 export const FieldsAddressStyled = styled.form``
+
+type GroupInputType = {
+    gridTemplateColumns: string;
+    gap?: string;
+}
+
+export const GroupInputStyled = styled.div<GroupInputType>`
+    display: grid;
+    grid-template-columns: ${(props)=> props.gridTemplateColumns};
+    gap: ${(props)=> props.gap}
+`

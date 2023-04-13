@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormAddress } from './components/FormAddress';
+import { SelectedCarts } from './components/SelectedCarts';
 import { WrapperCheckoutStyled } from './styled';
 
 export const Checkout = ():JSX.Element=> {
@@ -9,7 +10,7 @@ export const Checkout = ():JSX.Element=> {
                 <FormAddress/>
             </div>
             <div>
-                <FormAddress/>
+                <SelectedCarts/>
             </div>
         </WrapperCheckoutStyled>
     )

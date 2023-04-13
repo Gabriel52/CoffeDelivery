@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaCartArrowDown } from 'react-icons/fa';
+import { ButtonCounter } from '../../../../components/ButtonCounter';
 
 import { COLORS } from '../../../../configuration/colors';
 import { useProducts } from '../../../../Provider';
@@ -21,7 +22,7 @@ type Props = {
     productItem: ProductType
 }
 
-export const ProductItem = ({productItem}:Props) => {
+export const ProductItem = ({productItem}:Props): JSX.Element => {
     const [picture, setPicture] = useState<any>()
     const { updateProductToCart } = useProducts()
     const currencySettings = {
@@ -30,14 +31,28 @@ export const ProductItem = ({productItem}:Props) => {
         style: 'currency',
         currency: 'BRL'
     }
-    useEffect(()=>{
-        const dynamicImport = ()=> {
-            import(`../../../../assets/${productItem.photo}.svg`)
-                .then((svg)=>setPicture(svg.default))
-        }
-        dynamicImport()
-    },[])
+    useEffect(() => {
+        const fetchPicture = async () => {
+            try {
+                const { default: img } = await import(`../../../../assets/${productItem.photo}.svg`);
+                setPicture(img);
+            } catch (error) {
+                console.error(`Failed to load image for product ${productItem.name}`, error);
+            }
+        };
+        fetchPicture();
+    }, [productItem.photo]);
     
+    const updateItem = (shouldRemoveItem: boolean) => {
+        const updatedQuantity = shouldRemoveItem ? 
+            productItem.selectedQuantity - 1 :
+            productItem.selectedQuantity + 1;
+        
+        const { id, stock } = productItem;
+        
+        updateProductToCart(id, updatedQuantity, stock);
+    };
+
     return (    
         <CardStyled>
             <ProductProfile src={picture} alt={productItem.photo} />
@@ -55,33 +70,10 @@ export const ProductItem = ({productItem}:Props) => {
             <ContentBuyStyled>
                 <PriceStyled>{formatNumber(currencySettings)}</PriceStyled>
                 <ContentCartStyled>
-                    <div>
-                        <ButtonBuyStyled 
-                            borderRadius='8px 0px 0px 8px'
-                            onClick={()=> 
-                                updateProductToCart(
-                                    productItem.id, 
-                                    productItem.selectedQuantity - 1, 
-                                    productItem.stock
-                                )}
-                        >
-                            -
-                        </ButtonBuyStyled>
-                        <span>
-                            {productItem.selectedQuantity}
-                        </span>
-                        <ButtonBuyStyled 
-                            borderRadius='0px 8px 8px 0px' 
-                            onClick={()=> 
-                                updateProductToCart(
-                                    productItem.id, 
-                                    productItem.selectedQuantity + 1,
-                                    productItem.stock
-                                )}
-                        >
-                            +
-                        </ButtonBuyStyled>
-                    </div>
+                    <ButtonCounter 
+                        updateItem={updateItem} 
+                        itemAmount={productItem.selectedQuantity}
+                    />
                     <div>
                         <FaCartArrowDown color={COLORS.white}/>
                     </div>

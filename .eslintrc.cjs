@@ -5,8 +5,7 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'standard-with-typescript',
-    "prettier"
+    'standard-with-typescript'
   ],
   overrides: [
   ],
@@ -15,11 +14,8 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: [
-    'react',
-    "prettier"
-
+    'react'
   ],
   rules: {
-    "prettier/prettier": "error"
   }
 }

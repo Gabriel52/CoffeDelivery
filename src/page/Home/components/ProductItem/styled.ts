@@ -67,10 +67,7 @@ export const ContentCartStyled = styled.div`
     align-items: center;
     justify-content: center;
     gap: 8px;
-    span {
-        background-color: ${COLORS.base_button};
-        padding: 7.5px;
-    }
+    
 
     div:last-child {
         padding: 8px;
