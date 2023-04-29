@@ -20,13 +20,15 @@ export const ProductsProvider = ({children}:PropsContext) => {
     const [products, setProducts] = useState<ProductType[] | []>([]);
     const [totalPrice, setTotalPrice ] = useState<number>(0);
     const [amountProducts, setAmountProducts] = useState<number>(0)
-    const [userLocation, setUserLocation] = useState<LocationType>()
+    const [userLocation, setUserLocation] = useState<LocationType | null>()
     const [loadingSearchLocation, setLoadingSearchLocation] = useState<boolean>(true);
     useEffect(()=>{
         const getLocation = async ()=> {
             navigator.permissions.query({name: 'geolocation'}).then((result)=>{
                 if(result.state !== PERMISSION_ENABLED_LOCATION){
                     toast.error("Não conseguimos te localizar")
+                    setUserLocation(null)
+                    setLoadingSearchLocation(false)
                 }else {
                     navigator.geolocation.getCurrentPosition(async (position) =>{
                         const response = await get(
@@ -37,6 +39,8 @@ export const ProductsProvider = ({children}:PropsContext) => {
                         )
                         if(response.error){
                             toast.error("Não conseguimos te localizar")
+                            setUserLocation(null)
+                            setLoadingSearchLocation(false)
                             return
                         }
                         const data: LocationType = {

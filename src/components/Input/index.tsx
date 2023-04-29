@@ -4,14 +4,16 @@ type Props = {
     width?: string;
     placeholder?: string;
     name: string;
-    type: string;
+    type?: string;
+    disabled?: boolean
 }
 
 export const Input = ({
     width='100%',
-    placeholder, 
+    placeholder="placeholder", 
     name, 
-    type,
+    type="text",
+    disabled=false,
     ...rest
 }:Props)=> {
     return(
@@ -20,6 +22,7 @@ export const Input = ({
             type={type} 
             placeholder={placeholder}
             name={name}
+            disabled={disabled}
             {...rest}
         />
     )

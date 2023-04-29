@@ -33,7 +33,7 @@ export const Navbar = ():JSX.Element => {
                     <>
                             <TagLocationStyled>
                                     <MdLocationPin color={COLORS.purple_dark}/>
-                                    {userLocation?.state}
+                                    {userLocation ? userLocation.state : 'Sem localização'}
                             </TagLocationStyled>
                         <a href="/checkout">
                             <TagCartStyled>

@@ -32,13 +32,14 @@ export const FormAddress = ()=> {
                 </ContentTitleBoxStyled>
                 <FieldsAddressStyled>
                     <Input 
-                        width="200px"
+                        width="250px"
                         name="cep" 
-                        type="text" 
-                        placeholder='CEP'
+                        type="number" 
+                        placeholder='Coloque os números do seu CEP'
                     />
                     <Spacing type="margin" top="16px">
                         <Input
+                            disabled
                             width='96%'
                             name="street" 
                             type="text" 
@@ -48,11 +49,13 @@ export const FormAddress = ()=> {
                     <Spacing type="margin" top="16px">
                         <GroupInputStyled gridTemplateColumns='30% 60%' gap="6%">
                             <Input
+                                disabled
                                 name="houseNumber" 
                                 type="number" 
                                 placeholder='Número'
                             />
                             <Input
+                                disabled
                                 name="complement" 
                                 type="text" 
                                 placeholder='Complemento'
@@ -62,16 +65,19 @@ export const FormAddress = ()=> {
                     <Spacing type="margin" top="16px">
                         <GroupInputStyled gridTemplateColumns='30% 36% 18%' gap="6%">
                             <Input
+                                disabled
                                 name="neighborhood" 
                                 type="text" 
                                 placeholder='Bairro'
                             />
                             <Input
+                                disabled
                                 name="city" 
                                 type="text" 
                                 placeholder='Cidade'
                             />
                             <Input
+                                disabled
                                 name="uf" 
                                 type="text" 
                                 placeholder='UF'

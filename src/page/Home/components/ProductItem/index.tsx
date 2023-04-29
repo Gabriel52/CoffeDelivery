@@ -25,12 +25,6 @@ type Props = {
 export const ProductItem = ({productItem}:Props): JSX.Element => {
     const [picture, setPicture] = useState<any>()
     const { updateProductToCart } = useProducts()
-    const currencySettings = {
-        language: 'pt-BR',
-        value: productItem.price,
-        style: 'currency',
-        currency: 'BRL'
-    }
     useEffect(() => {
         const fetchPicture = async () => {
             try {
@@ -68,7 +62,7 @@ export const ProductItem = ({productItem}:Props): JSX.Element => {
                 {productItem.description}
             </DescriptionStyled>
             <ContentBuyStyled>
-                <PriceStyled>{formatNumber(currencySettings)}</PriceStyled>
+                <PriceStyled>{formatNumber({value: productItem.price})}</PriceStyled>
                 <ContentCartStyled>
                     <ButtonCounter 
                         updateItem={updateItem} 

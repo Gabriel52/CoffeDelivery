@@ -6,3 +6,5 @@ export const PERMISSION_ENABLED_LOCATION = 'granted'
 
 
 export const BASE_URL_SEARCH_USER_LOCATION = "https://nominatim.openstreetmap.org/"
+
+export const MAIN_LANGUAGE = 'pt-BR'

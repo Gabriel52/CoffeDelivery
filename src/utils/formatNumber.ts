@@ -1,14 +1,13 @@
+import { MAIN_LANGUAGE } from "../configuration/const";
 
 type Props = {
-    language: string;
     value: number;
-    style: string;
-    currency: string;
 }
 
-export const formatNumber = ({language, value, style, currency}: Props) => {
-    return (value).toLocaleString(language, {
-        style,
-        currency
-    })
+export const formatNumber = ({value}: Props) => {
+    const currencySettings = {
+        style: 'currency',
+        currency: 'BRL'
+    }
+    return (value).toLocaleString(MAIN_LANGUAGE, currencySettings)
 }

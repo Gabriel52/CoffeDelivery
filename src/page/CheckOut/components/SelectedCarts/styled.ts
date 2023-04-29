@@ -17,7 +17,7 @@ export const BoxSelectedCartStyled = styled.div`
 export const ContentSelectedCartsStyled = styled.ul`
     list-style: none;
     overflow-y: scroll;
-    height: 96%;
+    max-height: 512px;
     padding: 0px;
     ::-webkit-scrollbar {
         width: 12px;               /* width of the entire scrollbar */

@@ -22,12 +22,6 @@ type Props = {
 export const CartItems = ({productItem}:Props):JSX.Element => {
     const [picture, setPicture] = useState<any>()
     const { updateProductToCart } = useProducts()
-    const currencySettings = {
-        language: 'pt-BR',
-        value: productItem.price * productItem.selectedQuantity,
-        style: 'currency',
-        currency: 'BRL'
-    }
     useEffect(() => {
         const fetchPicture = async () => {
             try {
@@ -49,7 +43,6 @@ export const CartItems = ({productItem}:Props):JSX.Element => {
         
         updateProductToCart(id, updatedQuantity, stock);
     };
-    console.log(productItem)
     return (
         <ContentCartStyled>
             <div>
@@ -73,7 +66,9 @@ export const CartItems = ({productItem}:Props):JSX.Element => {
 
                 </div>
                 <div>
-                    <PriceStyled>{formatNumber(currencySettings)}</PriceStyled>
+                    <PriceStyled>
+                        {formatNumber({value: productItem.price * productItem.selectedQuantity})}
+                    </PriceStyled>
                 </div>
             </GroupInformationStyled>
         </ContentCartStyled>
