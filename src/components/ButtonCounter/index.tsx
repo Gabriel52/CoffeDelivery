@@ -1,7 +1,7 @@
 import { ButtonBuyStyled, ContentAmountStyled } from "./styled"
 
 type Props = {
-    updateItem: (removeItem: boolean) => void
+    updateItem: (isRemoveItem: boolean, isDeleteItem?: boolean) => void
     itemAmount: number;
 }
 

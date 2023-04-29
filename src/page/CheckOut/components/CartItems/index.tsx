@@ -14,6 +14,7 @@ import {
     ProductProfile, 
     TitleStyled 
 } from "./styled"
+import { IS_EMPTY } from "../../../../configuration/const"
 
 type Props = {
     productItem: ProductType
@@ -34,14 +35,17 @@ export const CartItems = ({productItem}:Props):JSX.Element => {
         fetchPicture();
     }, [productItem.photo]);
 
-    const updateItem = (shouldRemoveItem: boolean) => {
-        const updatedQuantity = shouldRemoveItem ? 
-            productItem.selectedQuantity - 1 :
-            productItem.selectedQuantity + 1;
-        
+    const updateItem = (isRemoveItem: boolean, isDeleitem?: boolean ) => {
         const { id, stock } = productItem;
-        
-        updateProductToCart(id, updatedQuantity, stock);
+        if(isDeleitem){
+            updateProductToCart(id, IS_EMPTY, stock);
+        }else{
+            const updatedQuantity = isRemoveItem ? 
+                productItem.selectedQuantity - 1 :
+                productItem.selectedQuantity + 1;
+            
+            updateProductToCart(id, updatedQuantity, stock);
+        }
     };
     return (
         <ContentCartStyled>
@@ -58,7 +62,7 @@ export const CartItems = ({productItem}:Props):JSX.Element => {
                             updateItem={updateItem} 
                             itemAmount={productItem.selectedQuantity}
                         />
-                        <ButtonRemoveItemStyled >
+                        <ButtonRemoveItemStyled onClick={()=>{updateItem(false, true)}} >
                             <FaTrashAlt />
                             Remover
                         </ButtonRemoveItemStyled>
