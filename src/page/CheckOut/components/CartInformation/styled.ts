@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import { COLORS } from "../../../../configuration/colors";
 
-export const ContentStyled = styled.div`
 
-`
 
 type TypographyStyled = {
     fontSize?: string,

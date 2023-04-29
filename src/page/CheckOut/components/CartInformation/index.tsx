@@ -1,5 +1,5 @@
 import { formatNumber } from "../../../../utils/formatNumber";
-import { ContentStyled, PriceStyled, TypographyItemStyled } from "./styled"
+import {  PriceStyled, TypographyItemStyled } from "./styled"
 
 type Props = {
     totalItems: number;
@@ -8,7 +8,7 @@ type Props = {
 
 export const CartInformation = ({totalItems, deliveryPrice}:Props):JSX.Element => {
     return (
-        <ContentStyled>
+        <div>
             <PriceStyled>
                 <TypographyItemStyled>
                     Total de itens
@@ -36,6 +36,6 @@ export const CartInformation = ({totalItems, deliveryPrice}:Props):JSX.Element =
                     {formatNumber(totalItems + deliveryPrice)}
                 </TypographyItemStyled>
             </PriceStyled>
-        </ContentStyled>
+        </div>
     )
 }
