@@ -18,7 +18,8 @@ export const ContentSelectedCartsStyled = styled.ul`
     list-style: none;
     overflow-y: scroll;
     max-height: 512px;
-    padding: 0px;
+    padding-left: 0px;
+    padding-right: 20px;
     ::-webkit-scrollbar {
         width: 12px;               /* width of the entire scrollbar */
     }

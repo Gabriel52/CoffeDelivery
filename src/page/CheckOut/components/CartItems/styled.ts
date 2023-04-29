@@ -6,6 +6,8 @@ export const ContentCartStyled = styled.li`
     display: flex;
     padding: 10px;
     column-gap: 20px;
+
+    border-bottom: 1px solid ${COLORS.base_button};
 `
 
 export const ProductProfile = styled.img`
