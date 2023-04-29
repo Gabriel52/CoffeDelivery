@@ -67,7 +67,7 @@ export const CartItems = ({productItem}:Props):JSX.Element => {
                 </div>
                 <div>
                     <PriceStyled>
-                        {formatNumber({value: productItem.price * productItem.selectedQuantity})}
+                        {formatNumber(productItem.price * productItem.selectedQuantity)}
                     </PriceStyled>
                 </div>
             </GroupInformationStyled>

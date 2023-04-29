@@ -10,7 +10,7 @@ export const BoxSelectedCartStyled = styled.div`
     padding: 40px;
     border-radius: 6px 44px;
     
-    max-height: 550px;
+    max-height: 750px;
 
 `
 

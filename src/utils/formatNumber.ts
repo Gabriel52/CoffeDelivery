@@ -1,10 +1,6 @@
 import { MAIN_LANGUAGE } from "../configuration/const";
 
-type Props = {
-    value: number;
-}
-
-export const formatNumber = ({value}: Props) => {
+export const formatNumber = (value: number) => {
     const currencySettings = {
         style: 'currency',
         currency: 'BRL'

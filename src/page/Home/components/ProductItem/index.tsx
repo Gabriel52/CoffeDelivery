@@ -62,7 +62,7 @@ export const ProductItem = ({productItem}:Props): JSX.Element => {
                 {productItem.description}
             </DescriptionStyled>
             <ContentBuyStyled>
-                <PriceStyled>{formatNumber({value: productItem.price})}</PriceStyled>
+                <PriceStyled>{formatNumber(productItem.price)}</PriceStyled>
                 <ContentCartStyled>
                     <ButtonCounter 
                         updateItem={updateItem} 
