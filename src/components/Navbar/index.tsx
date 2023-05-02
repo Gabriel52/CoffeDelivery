@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaCartArrowDown } from 'react-icons/fa';
 import { MdLocationPin } from 'react-icons/md';
 
@@ -19,7 +19,6 @@ import { Skeleton } from '../Skeleton';
 
 export const Navbar = ():JSX.Element => {
     const { amountProducts, userLocation, loadingSearchLocation } = useProducts()
-    
     return (
         <NavbarStyled>
             <a href="/">

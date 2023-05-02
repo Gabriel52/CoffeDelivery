@@ -1,27 +1,45 @@
 import { MdOutlineAttachMoney } from 'react-icons/md';
 
-import { ChoseButtonStyled, ContainerStyled } from "./styled"
+import { ChoseButtonStyled, ContainerStyled, DescriptionStyled, ButtonStyled } from "./styled"
+import { COLORS } from '../../../../configuration/colors';
+import { AiFillCreditCard, AiTwotoneBank } from 'react-icons/ai';
+import { useState } from 'react';
 
-// MdOutlineAttachMoney
-// AiFillCreditCard CREDIT CARD
-// AiTwotoneBank BANK
 export const ChosePayment = ():JSX.Element => {
+    const [activeButton, setActiveButton] = useState('withoutChoosing');
+    
+    const handleChangeActiveButton = (activeButton: string) => {
+        setActiveButton(activeButton);
+    }
+
     return (
         <ContainerStyled>
-            <div>
-                <MdOutlineAttachMoney />
+            <DescriptionStyled>
+                <MdOutlineAttachMoney size={30} color={COLORS.purple} />
                 <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
-            </div>
+            </DescriptionStyled>
             <ChoseButtonStyled>
-                <button>
+                <ButtonStyled 
+                    isActive={activeButton === 'creditCard'}
+                    onClick={()=>handleChangeActiveButton('creditCard')}
+                >
+                    <AiFillCreditCard size={20} color={COLORS.purple} />
                     Cartão de crédito
-                </button>
-                <button>
+                </ButtonStyled>
+                <ButtonStyled 
+                    isActive={activeButton === 'debitCard'}
+                    onClick={()=>handleChangeActiveButton('debitCard')}
+                >
+                    <AiTwotoneBank size={20} color={COLORS.purple} />
                     Cartão de débito
-                </button>
-                <button>
+                </ButtonStyled>
+                <ButtonStyled 
+                    isActive={activeButton === 'money'}
+                    onClick={()=>handleChangeActiveButton('money')}
+                >
+                    <MdOutlineAttachMoney size={20} color={COLORS.purple} />
                     Dinheiro
-                </button>
+                </ButtonStyled>
             </ChoseButtonStyled>
         </ContainerStyled>
     )

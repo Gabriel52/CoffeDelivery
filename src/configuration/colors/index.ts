@@ -12,5 +12,5 @@ export const COLORS = {
     white: '#FFFFFF',
     base_label: '#8D8686',
     base_button: '#E6E5E5 ',
-    base_input: '#EEEDED'
+    base_input: '#EEEDED',
 }

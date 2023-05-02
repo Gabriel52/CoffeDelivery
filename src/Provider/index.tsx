@@ -22,34 +22,39 @@ export const ProductsProvider = ({children}:PropsContext) => {
     const [amountProducts, setAmountProducts] = useState<number>(0)
     const [userLocation, setUserLocation] = useState<LocationType | null>()
     const [loadingSearchLocation, setLoadingSearchLocation] = useState<boolean>(true);
+    const [isFirstTime, setIsFirstTime] = useState(true)
     useEffect(()=>{
         const getLocation = async ()=> {
             navigator.permissions.query({name: 'geolocation'}).then((result)=>{
-                if(result.state !== PERMISSION_ENABLED_LOCATION){
-                    toast.error("Não conseguimos te localizar")
-                    setUserLocation(null)
-                    setLoadingSearchLocation(false)
-                }else {
-                    navigator.geolocation.getCurrentPosition(async (position) =>{
-                        const response = await get(
-                            {
-                                latitude: position.coords.latitude, 
-                                longitude: position.coords.longitude
-                            }
-                        )
-                        if(response.error){
-                            toast.error("Não conseguimos te localizar")
-                            setUserLocation(null)
-                            setLoadingSearchLocation(false)
-                            return
-                        }
-                        const data: LocationType = {
-                            country: response.data.address.country,
-                            state: response.data.address.state
-                        }
-                        setUserLocation(data)
+                if(isFirstTime){
+                    if(result.state !== PERMISSION_ENABLED_LOCATION){
+                        toast.error("Não conseguimos te localizar")
+                        setUserLocation(null)
                         setLoadingSearchLocation(false)
-                    })
+                        setIsFirstTime(false);
+                    }else {
+                        navigator.geolocation.getCurrentPosition(async (position) =>{
+                            const response = await get(
+                                {
+                                    latitude: position.coords.latitude, 
+                                    longitude: position.coords.longitude
+                                }
+                            )
+                            if(response.error){
+                                toast.error("Não conseguimos te localizar")
+                                setUserLocation(null)
+                                setLoadingSearchLocation(false)
+                                return
+                            }
+                            const data: LocationType = {
+                                country: response.data.address.country,
+                                state: response.data.address.state
+                            }
+                            setUserLocation(data)
+                            setLoadingSearchLocation(false)
+                        })
+                        setIsFirstTime(false);
+                    }
                 }
             })
         }
