@@ -42,7 +42,7 @@ export const TagCartStyled = styled.span`
     border-radius: 6px;
     transition: all 700ms;
 
-    :hover{
+    &:hover{
         filter: brightness(50%)
     }
 

@@ -2,10 +2,10 @@ import { IS_EMPTY, PRICE_DELIVERY } from "../../../../configuration/const"
 import { useProducts } from "../../../../Provider"
 import { CartInformation } from "../CartInformation"
 import { CartItems } from "../CartItems"
-import { BoxSelectedCartStyled, ContentSelectedCartsStyled, TiTleStyled } from "./styled"
+import { BoxSelectedCartStyled, ConfirmButtonStyled, ContentSelectedCartsStyled, TiTleStyled } from "./styled"
 
 export const SelectedCarts = ():JSX.Element => {
-    const { products, totalPrice } = useProducts()
+    const { products, totalPrice, onSubmitForm } = useProducts()
 
     const selectedProducts = 
         products.filter(product => product.selectedQuantity !== IS_EMPTY)
@@ -25,6 +25,9 @@ export const SelectedCarts = ():JSX.Element => {
                     ))}
                 </ContentSelectedCartsStyled>
                 <CartInformation totalItems={totalPrice} deliveryPrice={PRICE_DELIVERY} />
+                <ConfirmButtonStyled onClick={onSubmitForm}>
+                    Confirmar
+                </ConfirmButtonStyled>
             </BoxSelectedCartStyled>
         </>
     )

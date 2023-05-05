@@ -17,3 +17,12 @@ export const InputStyled = styled.input<InputType>`
     font-weight: 400;
     color: ${COLORS.base_label};
 `
+
+export const ContentInputStyled = styled.div`
+    display: grid;
+    gap: 5px;
+
+    span {
+        color: ${COLORS.error};
+    }
+`

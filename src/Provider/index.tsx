@@ -4,7 +4,8 @@ import { IS_EMPTY, PERMISSION_ENABLED_LOCATION } from '../configuration/const';
 
 
 import { API } from '../services/api';
-import { get } from '../services/searchLocation/get';
+import { get as getLocation } from '../services/searchLocation/get';
+import { get as getCep } from '../services/searchCep/get';
 import { LocationType, ProductType } from '../types';
 import { PropsProvider } from './types';
 
@@ -24,13 +25,10 @@ export const ProductsProvider = ({children}:PropsContext) => {
     const [loadingSearchLocation, setLoadingSearchLocation] = useState<boolean>(true);
     const [isFirstTime, setIsFirstTime] = useState(true)
     const [activeButton, setActiveButton] = useState('withoutChoosing');
-    
-    const handleChangeActiveButton = (activeButton: string) => {
-        setActiveButton(activeButton);
-    }
+
 
     useEffect(()=>{
-        const getLocation = async ()=> {
+        const onGetLocation = async ()=> {
             navigator.permissions.query({name: 'geolocation'}).then((result)=>{
                 if(isFirstTime){
                     if(result.state !== PERMISSION_ENABLED_LOCATION){
@@ -40,7 +38,7 @@ export const ProductsProvider = ({children}:PropsContext) => {
                         setIsFirstTime(false);
                     }else {
                         navigator.geolocation.getCurrentPosition(async (position) =>{
-                            const response = await get(
+                            const response = await getLocation(
                                 {
                                     latitude: position.coords.latitude, 
                                     longitude: position.coords.longitude
@@ -64,7 +62,7 @@ export const ProductsProvider = ({children}:PropsContext) => {
                 }
             })
         }
-        getLocation()
+        onGetLocation()
     },[])    
     useEffect(()=> {
         const productsLocal = localStorage.getItem('products');
@@ -109,6 +107,21 @@ export const ProductsProvider = ({children}:PropsContext) => {
         localStorage.setItem("products", JSON.stringify(newProducts))   
     }
 
+    
+    const handleChangeActiveButton = (activeButton: string) => {
+        setActiveButton(activeButton);
+    }
+
+    const onSubmitForm = () => {
+        // Logic to submit data 
+        
+    }
+
+    const handleSearchCep = async (cep: string) => {
+        const {data} = await getCep({cep})
+        console.log(data)
+    }
+
     const calculateTotalPrice = (newProducts: ProductType[])=>{
         const itemsProduct = newProducts.filter(product => product.selectedQuantity !== IS_EMPTY)
         if(itemsProduct?.length !== IS_EMPTY){
@@ -150,7 +163,9 @@ export const ProductsProvider = ({children}:PropsContext) => {
             loadingSearchLocation,
             activeButton,
             updateProductToCart,
-            handleChangeActiveButton
+            handleChangeActiveButton,
+            handleSearchCep,
+            onSubmitForm
         }}>
             {children}
         </ProductsContext.Provider>

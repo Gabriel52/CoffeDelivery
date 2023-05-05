@@ -2,8 +2,7 @@ import { API_LIST } from "../../../configuration/endpoints";
 import { API } from "../../api";
 
 type Props = {
-    latitude: number;
-    longitude: number;
+    cep: string;
 }
 
 type GetResponse = {
@@ -11,9 +10,9 @@ type GetResponse = {
     data: any;
 }
 
-export async function get({latitude, longitude}: Props):Promise<GetResponse>{
+export async function get({cep}: Props):Promise<GetResponse>{
     const params = 
-        `${API_LIST. searchLocation}/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`
+        `${API_LIST.searchCep}/${cep}/json`
     
     try{
         const response = await API.get(params)

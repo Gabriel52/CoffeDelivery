@@ -34,3 +34,15 @@ export const ContentSelectedCartsStyled = styled.ul`
         border: 3px solid #d8d4d4;  /* creates padding around scroll thumb */
     }
 `
+
+export const ConfirmButtonStyled = styled.button`
+    width: 100%;
+    color: ${COLORS.white};
+    background-color: ${COLORS.yellow};
+    transition: all 700ms;
+
+    &:hover{
+        filter: brightness(50%)
+    }
+
+`

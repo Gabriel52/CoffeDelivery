@@ -13,4 +13,5 @@ export const COLORS = {
     base_label: '#8D8686',
     base_button: '#E6E5E5 ',
     base_input: '#EEEDED',
+    error: '#bf1414'
 }

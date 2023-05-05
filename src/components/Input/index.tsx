@@ -1,4 +1,4 @@
-import { InputStyled } from "./styled";
+import { ContentInputStyled, InputStyled } from "./styled";
 
 type Props = {
     width?: string;
@@ -6,6 +6,11 @@ type Props = {
     name: string;
     type?: string;
     disabled?: boolean
+    value?: string
+    errorMessage?: string
+    isError?: boolean
+    onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined
+
 }
 
 export const Input = ({
@@ -14,16 +19,25 @@ export const Input = ({
     name, 
     type="text",
     disabled=false,
+    value,
+    errorMessage,
+    isError,
+    onChange,
     ...rest
 }:Props)=> {
     return(
-        <InputStyled
-            width={width}
-            type={type} 
-            placeholder={placeholder}
-            name={name}
-            disabled={disabled}
-            {...rest}
-        />
+        <ContentInputStyled>
+            <InputStyled
+                width={width}
+                value={value}
+                type={type} 
+                placeholder={placeholder}
+                name={name}
+                disabled={disabled}
+                onChange={onChange}
+                {...rest}
+            />
+            {isError && <span>{errorMessage}</span>}
+        </ContentInputStyled>
     )
 }

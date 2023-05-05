@@ -45,5 +45,26 @@ type GroupInputType = {
 export const GroupInputStyled = styled.div<GroupInputType>`
     display: grid;
     grid-template-columns: ${(props)=> props.gridTemplateColumns};
-    gap: ${(props)=> props.gap}
+    gap: ${(props)=> props.gap};
 `
+
+
+export const ButtonStyled = styled.button`
+    color: ${COLORS.white};
+    background-color: ${COLORS.yellow};
+    transition: all 700ms;
+    height: 44px;
+
+    &:disabled {
+        background-color: ${COLORS.gray};
+        cursor: not-allowed;
+
+        &:hover {
+        filter: brightness(100%);
+        }
+    }
+
+    &:hover {
+        filter: brightness(50%);
+    }
+`;

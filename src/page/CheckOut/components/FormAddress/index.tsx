@@ -5,14 +5,21 @@ import { COLORS } from '../../../../configuration/colors';
 
 import { 
     BoxAddressStyled, 
+    ButtonStyled, 
     ContentTitleBoxStyled, 
     FieldsAddressStyled, 
     GroupInputStyled, 
     TiTleStyled, 
     TypographyStyled 
 } from './styled';
+import { useFormAddress } from './useFormAddress';
+import { useProducts } from '../../../../Provider';
+
+const ERROR_MESSAGE_CEP =  'Por favor coloque um CEP valido'
 
 export const FormAddress = ()=> {
+    const { handleCepChange, cep, isValidCep } = useFormAddress()
+    const { handleSearchCep } = useProducts()
     return(
         <div>
             <TiTleStyled>
@@ -31,12 +38,25 @@ export const FormAddress = ()=> {
                     </div>
                 </ContentTitleBoxStyled>
                 <FieldsAddressStyled>
-                    <Input 
-                        width="250px"
-                        name="cep" 
-                        type="number" 
-                        placeholder='Coloque os números do seu CEP'
-                    />
+                    <div style={{display: 'flex', gridGap: '8px'}}>
+                        <Input 
+                            width="250px"
+                            name="cep" 
+                            type="number" 
+                            placeholder='Coloque os números do seu CEP'
+                            value={cep}
+                            isError={!isValidCep}
+                            errorMessage={ERROR_MESSAGE_CEP}
+                            onChange={handleCepChange}
+                        />
+                        <ButtonStyled 
+                            type="button" 
+                            disabled={!isValidCep}
+                            onClick={()=> handleSearchCep(cep)}
+                        >
+                            Buscar CEP
+                        </ButtonStyled>
+                    </div>
                     <Spacing type="margin" top="16px">
                         <Input
                             disabled
