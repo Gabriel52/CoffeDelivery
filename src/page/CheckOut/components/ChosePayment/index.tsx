@@ -3,14 +3,10 @@ import { MdOutlineAttachMoney } from 'react-icons/md';
 import { ChoseButtonStyled, ContainerStyled, DescriptionStyled, ButtonStyled } from "./styled"
 import { COLORS } from '../../../../configuration/colors';
 import { AiFillCreditCard, AiTwotoneBank } from 'react-icons/ai';
-import { useState } from 'react';
+import { useProducts } from '../../../../Provider';
 
 export const ChosePayment = ():JSX.Element => {
-    const [activeButton, setActiveButton] = useState('withoutChoosing');
-    
-    const handleChangeActiveButton = (activeButton: string) => {
-        setActiveButton(activeButton);
-    }
+    const { activeButton, handleChangeActiveButton } = useProducts()
 
     return (
         <ContainerStyled>

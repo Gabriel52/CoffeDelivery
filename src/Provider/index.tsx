@@ -23,6 +23,12 @@ export const ProductsProvider = ({children}:PropsContext) => {
     const [userLocation, setUserLocation] = useState<LocationType | null>()
     const [loadingSearchLocation, setLoadingSearchLocation] = useState<boolean>(true);
     const [isFirstTime, setIsFirstTime] = useState(true)
+    const [activeButton, setActiveButton] = useState('withoutChoosing');
+    
+    const handleChangeActiveButton = (activeButton: string) => {
+        setActiveButton(activeButton);
+    }
+
     useEffect(()=>{
         const getLocation = async ()=> {
             navigator.permissions.query({name: 'geolocation'}).then((result)=>{
@@ -138,11 +144,13 @@ export const ProductsProvider = ({children}:PropsContext) => {
     return (
         <ProductsContext.Provider value={{
             products,
-            updateProductToCart,
             totalPrice,
             amountProducts,
             userLocation,
-            loadingSearchLocation
+            loadingSearchLocation,
+            activeButton,
+            updateProductToCart,
+            handleChangeActiveButton
         }}>
             {children}
         </ProductsContext.Provider>
