@@ -6,13 +6,26 @@ import { IS_EMPTY, PERMISSION_ENABLED_LOCATION } from '../configuration/const';
 import { API } from '../services/api';
 import { get as getLocation } from '../services/searchLocation/get';
 import { get as getCep } from '../services/searchCep/get';
-import { LocationType, ProductType } from '../types';
+import { InfoAddressType, LocationType, ProductType } from '../types';
 import { PropsProvider } from './types';
 
 
 type PropsContext = {
     children: ReactNode;
     
+}
+
+const INITIAL_VALUE_ADDRESS = {
+    cep: '',
+    logradouro: '',
+    complemento: '',
+    bairro: '',
+    localidade: '',
+    uf: '',
+    ibge: '',
+    gia: '',
+    ddd: '',
+    siafi: ''
 }
 
 const ProductsContext = createContext<PropsProvider>({} as PropsProvider);
@@ -25,6 +38,7 @@ export const ProductsProvider = ({children}:PropsContext) => {
     const [loadingSearchLocation, setLoadingSearchLocation] = useState<boolean>(true);
     const [isFirstTime, setIsFirstTime] = useState(true)
     const [activeButton, setActiveButton] = useState('withoutChoosing');
+    const [infoAddress, setInfoAddress] = useState<InfoAddressType>()
 
 
     useEffect(()=>{
@@ -119,7 +133,8 @@ export const ProductsProvider = ({children}:PropsContext) => {
 
     const handleSearchCep = async (cep: string) => {
         const {data} = await getCep({cep})
-        console.log(data)
+        setInfoAddress(data)
+
     }
 
     const calculateTotalPrice = (newProducts: ProductType[])=>{
@@ -165,7 +180,8 @@ export const ProductsProvider = ({children}:PropsContext) => {
             updateProductToCart,
             handleChangeActiveButton,
             handleSearchCep,
-            onSubmitForm
+            onSubmitForm,
+            infoAddress
         }}>
             {children}
         </ProductsContext.Provider>

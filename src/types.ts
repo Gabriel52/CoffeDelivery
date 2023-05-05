@@ -13,3 +13,16 @@ export type LocationType = {
     country: string,
     state: string
 }
+
+export type InfoAddressType = {
+    cep: string,
+    logradouro: string,
+    complemento: string,
+    bairro: string,
+    localidade: string,
+    uf: string,
+    ibge: string,
+    gia: string,
+    ddd: string,
+    siafi: string
+}

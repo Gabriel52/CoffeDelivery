@@ -1,4 +1,4 @@
-import { LocationType, ProductType } from "../types"
+import { InfoAddressType, LocationType, ProductType } from "../types"
 
 export type PropsProvider = {
     products: ProductType[];
@@ -11,4 +11,5 @@ export type PropsProvider = {
     handleSearchCep: (cep: string) => Promise<void>;
     handleChangeActiveButton: (activeButton: string) => void;
     onSubmitForm: ()=> void;
+    infoAddress: InfoAddressType | undefined
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { IoLocationOutline } from 'react-icons/io5';
 import { Input, Spacing } from '../../../../components';
 import { COLORS } from '../../../../configuration/colors';
@@ -19,7 +19,8 @@ const ERROR_MESSAGE_CEP =  'Por favor coloque um CEP valido'
 
 export const FormAddress = ()=> {
     const { handleCepChange, cep, isValidCep } = useFormAddress()
-    const { handleSearchCep } = useProducts()
+    const { handleSearchCep, infoAddress} = useProducts()
+    
     return(
         <div>
             <TiTleStyled>
@@ -64,6 +65,7 @@ export const FormAddress = ()=> {
                             name="street" 
                             type="text" 
                             placeholder='Rua'
+                            value={infoAddress && infoAddress.logradouro}
                         />
                     </Spacing>
                     <Spacing type="margin" top="16px">
@@ -73,12 +75,14 @@ export const FormAddress = ()=> {
                                 name="houseNumber" 
                                 type="number" 
                                 placeholder='Número'
+                                value={infoAddress && infoAddress.gia}
                             />
                             <Input
                                 disabled
                                 name="complement" 
                                 type="text" 
                                 placeholder='Complemento'
+                                value={infoAddress && infoAddress.complemento}
                             />
                         </GroupInputStyled>
                     </Spacing>
@@ -89,18 +93,21 @@ export const FormAddress = ()=> {
                                 name="neighborhood" 
                                 type="text" 
                                 placeholder='Bairro'
+                                value={infoAddress && infoAddress.bairro}
                             />
                             <Input
                                 disabled
                                 name="city" 
                                 type="text" 
                                 placeholder='Cidade'
+                                value={infoAddress && infoAddress.localidade}
                             />
                             <Input
                                 disabled
                                 name="uf" 
                                 type="text" 
                                 placeholder='UF'
+                                value={infoAddress && infoAddress.uf}
                             />
                         </GroupInputStyled>
                     </Spacing>
