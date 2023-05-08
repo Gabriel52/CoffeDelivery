@@ -10,6 +10,5 @@ export type PropsProvider = {
     updateProductToCart: (idProduct: number, quantityOfProducts: number, stock: number) => void;
     handleSearchCep: (cep: string) => Promise<void>;
     handleChangeActiveButton: (activeButton: string) => void;
-    onSubmitForm: ()=> void;
     infoAddress: InfoAddressType | undefined
 }

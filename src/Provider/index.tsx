@@ -1,8 +1,9 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
+import { useNavigate  } from 'react-router-dom';
+
+
 import { IS_EMPTY, PERMISSION_ENABLED_LOCATION } from '../configuration/const';
-
-
 import { API } from '../services/api';
 import { get as getLocation } from '../services/searchLocation/get';
 import { get as getCep } from '../services/searchCep/get';
@@ -13,19 +14,6 @@ import { PropsProvider } from './types';
 type PropsContext = {
     children: ReactNode;
     
-}
-
-const INITIAL_VALUE_ADDRESS = {
-    cep: '',
-    logradouro: '',
-    complemento: '',
-    bairro: '',
-    localidade: '',
-    uf: '',
-    ibge: '',
-    gia: '',
-    ddd: '',
-    siafi: ''
 }
 
 const ProductsContext = createContext<PropsProvider>({} as PropsProvider);
@@ -39,7 +27,6 @@ export const ProductsProvider = ({children}:PropsContext) => {
     const [isFirstTime, setIsFirstTime] = useState(true)
     const [activeButton, setActiveButton] = useState('withoutChoosing');
     const [infoAddress, setInfoAddress] = useState<InfoAddressType>()
-
 
     useEffect(()=>{
         const onGetLocation = async ()=> {
@@ -82,6 +69,7 @@ export const ProductsProvider = ({children}:PropsContext) => {
         const productsLocal = localStorage.getItem('products');
         const totalProductsLocal = localStorage.getItem('totalPrice');
         const amountProductsLocal = localStorage.getItem('amountProducts');
+        const infoAddressLocal = localStorage.getItem('infoAddress');
 
         const fetchData = async () => {
             const { data } = await API.get('coffees')
@@ -91,7 +79,10 @@ export const ProductsProvider = ({children}:PropsContext) => {
             setProducts(JSON.parse(productsLocal))
             setTotalPrice(Number(totalProductsLocal))
             setAmountProducts(Number(amountProductsLocal))
-            return
+        }
+        if(!!infoAddressLocal){
+            setInfoAddress(JSON.parse(infoAddressLocal))
+
         }
         fetchData()
     },[])
@@ -126,15 +117,10 @@ export const ProductsProvider = ({children}:PropsContext) => {
         setActiveButton(activeButton);
     }
 
-    const onSubmitForm = () => {
-        // Logic to submit data 
-        
-    }
-
     const handleSearchCep = async (cep: string) => {
         const {data} = await getCep({cep})
         setInfoAddress(data)
-
+        localStorage.setItem("infoAddress", JSON.stringify(data))
     }
 
     const calculateTotalPrice = (newProducts: ProductType[])=>{
@@ -180,7 +166,6 @@ export const ProductsProvider = ({children}:PropsContext) => {
             updateProductToCart,
             handleChangeActiveButton,
             handleSearchCep,
-            onSubmitForm,
             infoAddress
         }}>
             {children}

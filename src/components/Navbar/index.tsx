@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 import { FaCartArrowDown } from 'react-icons/fa';
 import { MdLocationPin } from 'react-icons/md';
 
@@ -30,10 +30,10 @@ export const Navbar = ():JSX.Element => {
                     <Skeleton width='180px' height='42px'/>
                 ):(
                     <>
-                            <TagLocationStyled>
-                                    <MdLocationPin color={COLORS.purple_dark}/>
-                                    {userLocation ? userLocation.state : 'Sem localização'}
-                            </TagLocationStyled>
+                        <TagLocationStyled>
+                            <MdLocationPin color={COLORS.purple_dark}/>
+                            {userLocation ? userLocation.state : 'Sem localização'}
+                        </TagLocationStyled>
                         <a href="/checkout">
                             <TagCartStyled>
                                 <FaCartArrowDown color={COLORS.yellow_dark} />

@@ -7,7 +7,6 @@ import { useProducts } from '../../../../Provider';
 import { ProductType } from '../../../../types';
 import { formatNumber } from '../../../../utils/formatNumber';
 import { 
-    ButtonBuyStyled,
     CardStyled, 
     ContentBuyStyled, 
     ContentCartStyled, 
