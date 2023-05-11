@@ -1,10 +1,8 @@
 <h1 align="center">
     <img alt="Logo" title="Logo" src="src/assets/logo.svg">
 </h1>
-  <p>
-   the coffee delivery is an application to sell coffee , this documentation explana more about this challenge, <br>
-  </p>
-
+  
+  Coffee delivery is an application to sell coffee , this [documentation](https://efficient-sloth-d85.notion.site/Desafio-02-Coffee-Delivery-30e42a21fdb44b09a85244fc2c3dbdf9) explains more about this challenge
 
  <h2>&#128396; Figma</h2>
   <p>Link: <a> https://www.figma.com/file/eoBLlrTBrjSwUuLoiqmmjd/Coffee-Delivery-(Copy)?type=design&t=mLHh0lTjoJUcVorh-0</a></p>
@@ -35,23 +33,27 @@
 
 * Save date in local storage
 
-<h2> :wrench: Pré-requisitos</h2>
+<h2> :wrench: Prerequisites</h2>
 
- Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). Além disto é bom ter um editor para trabalhar com o código como o [VSCode](https://code.visualstudio.com/)
+ Before you start, you need to install the following tools on your machine:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). Also, it's good to have an editor to work with code like [VSCode](https://code.visualstudio.com/)
 
-:rocket: Para rodar a aplicação
+:rocket: To run the application
 
   ```bash
 
 # Clone este repositório
-$ git clone https://github.com/Gabriel52/Ignite-challenge
+$ git clone https://github.com/Gabriel52/CoffeDelivery
 
 # Acesse a pasta do projeto no seu terminal/cmd
-$ cd ignite-challenge
+$ cd CoffeDelivery
 
-# Execute o comando na pasta ignews para instalar todas as dependências
+# Execute o comando na pasta coffeeDelivery para instalar todas as dependências
 $ npm install ou yarn
+
+# Execute o comando para rodar o banco de dados
+$ npm run database:start
+
 
 # Execute a aplicação em modo de desenvolvimento, é importante executar este comando
 $ npm run dev ou yarn dev
@@ -61,17 +63,17 @@ $ npm run dev ou yarn dev
  ```
 
 ## 🛠 Tecnologias
-* Next JS;
-* Prismic;
-* Figma;
-* fetch;
-* react icons;
-* date fns.
+* React JS
+* Typescript
+* Axios
+* Json-server
+* Context api
+* Styled components
 
-<h2> :book: Licença </h2>
-<p>Lançado em 2022 :book:</p></br>
-<p>Feito por Gabriel Brune :rocket:. Este projeto está sobre a licença do MIT</p></br>
-<p>Dar uma :star: se este projeto te ajudou</p>
+<h2> :book: License </h2>
+<p>Released in 2023 :book:</p></br>
+<p>Made by Gabriel Brune :rocket:. This project is under the MIT license</p></br>
+<p>Give a :star: if this project helps you</p>
 
-<h2> 🐛 Problemas</h2
-<p>Sinta-se à vontade para registrar um novo problema com o respectivo título e descrição no repositório Ignite challenge . Se você já encontrou uma solução para seu problema, eu adoraria revisar sua solicitação de pull!</p>
+<h2> 🐛 Problems</h2
+<p>Feel free to file a new issue with its title and description in the Ignite challenge repository. If you've already found a solution to your problem, I'd love to review your pull request!</p>
