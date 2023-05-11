@@ -4,8 +4,7 @@
   
   Coffee delivery is an application to sell coffee , this [documentation](https://efficient-sloth-d85.notion.site/Desafio-02-Coffee-Delivery-30e42a21fdb44b09a85244fc2c3dbdf9) explains more about this challenge
 
- <h2>&#128396; Figma</h2>
-  <p>Link: <a> https://www.figma.com/file/eoBLlrTBrjSwUuLoiqmmjd/Coffee-Delivery-(Copy)?type=design&t=mLHh0lTjoJUcVorh-0</a></p>
+  &#128396; [Figma](https://www.figma.com/file/eoBLlrTBrjSwUuLoiqmmjd/Coffee-Delivery-(Copy)?type=design&t=mLHh0lTjoJUcVorh-0)
  <h2>:computer: Web Application</h2>
 
  <h3>Home</h3>
